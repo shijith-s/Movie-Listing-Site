@@ -1,0 +1,28 @@
+@import "./variables";
+
+.header {
+  width: auto;
+  height: 50px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $purple2;
+  h2 {
+    padding: 10px;
+    color: white;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+  }
+  .searchBar {
+    margin-right: 20px;
+    padding: 5px 10px;
+    width: 250px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+  }
+}
