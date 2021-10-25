@@ -14,13 +14,13 @@
 }
 
 .header {
-  width: 100vw;
   height: 50px;
   position: -webkit-sticky;
   position: sticky;
   z-index: 100;
   top: 0;
   left: 0;
+  right: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -55,14 +55,61 @@
   cursor: pointer;
   margin: 10px;
   font-size: 30px;
+  display: block;
 }
 
-.header .header__left .searchBar {
+.header .header__left .searchBar__offset {
+  display: block;
+}
+
+.header .header__left .searchBar__offset .searchBar {
   margin-right: 20px;
   padding: 5px 10px;
   width: 250px;
   border-radius: 10px;
   border: none;
   outline: none;
+}
+
+.header .header__left .header__searchIcon {
+  color: whitesmoke;
+  cursor: pointer;
+  margin: 10px;
+  font-size: 30px;
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .header .header__left .header__searchIcon {
+    display: block;
+  }
+  .header .header__left .searchBar__offset {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+    padding: 10px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    display: none;
+  }
+  .header .header__left .searchBar__offset .searchBar {
+    background-color: #333;
+    color: white;
+    -webkit-box-flex: 0.8;
+        -ms-flex: 0.8;
+            flex: 0.8;
+    padding: 10px;
+    margin: auto;
+  }
+  .header .header__left .searchBar__offsetShow {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 /*# sourceMappingURL=header.css.map */

@@ -3,6 +3,7 @@ import '../CSS/movies.css';
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import MovieContextProvider from '../React Context/MovieContext';
+import ErrorImg from '../Images/404Error.jpg';
 
 function MovieCard({movieData}) {
   const [movies, dispatch] = MovieContextProvider ();
@@ -23,18 +24,28 @@ function MovieCard({movieData}) {
   return (
     <div className="movieCard">
       {movies.favourites.find (movie => movie.imdbID === movieData.imdbID)
-        ? <FavoriteIcon
-            className="movieCard__favIcon favRed"
-            onClick={favRemover}
-            title="Remove from favourites"
-          />
-        : <FavoriteTwoToneIcon
-            className="movieCard__favIcon"
-            onClick={favAdder}
-            title="Add to favourites"
-          />}
+        ? <span title="Remove from favourites">
+            {' '}
+            <FavoriteIcon
+              className="movieCard__favIcon favRed"
+              onClick={favRemover}
+            />
+          </span>
+        : <span title="Add to favourites">
+            <FavoriteTwoToneIcon
+              className="movieCard__favIcon"
+              onClick={favAdder}
+            />
+          </span>}
       <div className="movieCard__poster">
-        <img src={movieData.Poster} alt="poster" />
+        <img
+          src={movieData.Poster}
+          alt="poster"
+          onError={e => {
+            e.target.src = ErrorImg;
+            e.target.onerror = null;
+          }}
+        />
       </div>
       <div className="movieCard__data">
         <h3>{movieData.Title}</h3>

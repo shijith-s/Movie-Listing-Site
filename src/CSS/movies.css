@@ -9,6 +9,27 @@
   padding: 50px 20px 50px;
 }
 
+.backToTop {
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(200, 200, 200, 0.8);
+  color: black;
+  border-radius: 50%;
+  z-index: 150;
+  font-weight: 800;
+  padding: 10px;
+  text-align: center;
+}
+
+.backToTop:hover {
+  background-color: #f0f0f0;
+}
+
 .favourites {
   padding-top: 20px;
 }
@@ -41,6 +62,7 @@
   margin: 20px;
   overflow: hidden;
   background-color: black;
+  border-radius: 10px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
 }
@@ -54,6 +76,7 @@
   -webkit-transition: all 0.4s ease-in;
   transition: all 0.4s ease-in;
   color: whitesmoke;
+  text-shadow: -5px 10px rgba(0, 0, 0, 0.9);
 }
 
 .movieCard .movieCard__favIcon:hover {
@@ -94,7 +117,6 @@
   left: 0;
   right: 0;
   z-index: 50;
-  font-size: 16px;
 }
 
 .movieCard .movieCard__data p {
@@ -129,23 +151,19 @@
   opacity: 1;
 }
 
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 600px) {
   .movieCard__data {
-    font-size: 1.5em;
+    font-size: 0.5em;
   }
   .movieList,
   .favourites_list {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    width: auto;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-grid-columns: (minmax(150px, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 2px;
+    padding: 0;
+  }
+  .movieList {
+    padding-top: 50px;
   }
 }
 /*# sourceMappingURL=movies.css.map */

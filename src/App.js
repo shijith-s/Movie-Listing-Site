@@ -31,7 +31,7 @@ function App () {
 
       <div className="movieContent">
         {fav ? <Favourites closeFav={closeFav} /> : <MovieList />}
-      </div>;
+      </div>
     </div>
   );
 }
