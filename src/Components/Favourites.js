@@ -13,13 +13,15 @@ function Favourites({closeFav}) {
         <ArrowBackIcon onClick={closeFav} className="favourites__back" />
         <h2>Favourites</h2>
       </div>
-      <div className="favourites_list">
-        {FavMovies.length > 0
-          ? FavMovies.map ((movie, idx) => (
+      {FavMovies.length > 0
+        ? <div className="favourites_list">
+            {FavMovies.map ((movie, idx) => (
               <MovieCard key={idx} movieData={movie} />
-            ))
-          : <h2>No Favourites in your List</h2>}
-      </div>
+            ))}
+          </div>
+        : <h2 className="hometext">
+            You have no favourites yet ...
+          </h2>}
     </div>
   );
 }

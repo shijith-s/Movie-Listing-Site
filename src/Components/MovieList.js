@@ -10,17 +10,9 @@ const url = process.env.REACT_APP_API_URL;
 function MovieList () {
   const [AllMovies, dispatch] = MovieContextProvider ();
   const BackToTop = useRef ();
-  const [page, setPage] = useState (2);
   console.log (AllMovies);
 
-  useEffect (
-    () => {
-      console.log ('movieslist page');
-      console.log (AllMovies);
-    },
-    [AllMovies]
-  );
-
+  const page = AllMovies.page;
   const searchVal = AllMovies.searchVal;
   console.log (searchVal);
 
@@ -54,7 +46,9 @@ function MovieList () {
       document.documentElement.clientHeight;
     if (winScroll === height) {
       if (page === 100) return;
-      setPage (pg => pg + 1);
+      dispatch ({
+        type: 'INCREMENT_PAGES',
+      });
       getMovies ();
     }
   }
@@ -79,12 +73,16 @@ function MovieList () {
 
   const searchedMovies = AllMovies.movies;
   return (
-    <div className="movieList">
+    <div className="movies">
       {searchedMovies.length > 0
-        ? searchedMovies.map ((movie, idx) => (
-            <MovieCard key={idx} movieData={movie} />
-          ))
-        : <h2>Search for movies...</h2>}
+        ? <div className="movieList">
+            {searchedMovies.map ((movie, idx) => (
+              <MovieCard key={idx} movieData={movie} />
+            ))}
+          </div>
+        : <h2 className="hometext">
+            Get your favourite movies on your fingertips...
+          </h2>}
       <div ref={BackToTop} className="backToTop" onClick={backToTop}>
         <ArrowUpwardIcon style={{fontSize: '30px'}} />
       </div>

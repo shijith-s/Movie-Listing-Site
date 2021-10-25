@@ -7,7 +7,9 @@
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 10px;
   padding: 50px 20px 50px;
-  // overflow-x: hidden;
+  h2 {
+    font-family: "Cookie", cursive;
+  }
 }
 
 .backToTop {
@@ -49,6 +51,12 @@
   }
 }
 
+.hometext {
+  margin: 50px;
+  font-size: 2em;
+  font-family: "Cookie", cursive;
+}
+
 .movieCard {
   position: relative;
   cursor: pointer;
@@ -66,8 +74,7 @@
     font-size: 30px;
     opacity: 0;
     transition: all 0.4s ease-in;
-    color: whitesmoke;
-    text-shadow: -5px 10px rgba(0, 0, 0, 0.9);
+    color: rgba(150, 150, 150, 0.8);
     &:hover {
       color: rgba(241, 57, 57, 0.979);
     }
@@ -146,7 +153,7 @@
     gap: 2px;
     padding: 0;
   }
-  .movieList {  
+  .movieList {
     padding-top: 50px;
   }
 }

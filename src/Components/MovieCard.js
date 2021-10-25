@@ -25,7 +25,6 @@ function MovieCard({movieData}) {
     <div className="movieCard">
       {movies.favourites.find (movie => movie.imdbID === movieData.imdbID)
         ? <span title="Remove from favourites">
-            {' '}
             <FavoriteIcon
               className="movieCard__favIcon favRed"
               onClick={favRemover}

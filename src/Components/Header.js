@@ -41,7 +41,8 @@ function Header({toggleFav, closeFav}) {
           }
           return;
         }
-        openSearch ();
+        toggleSearch ();
+        backToTop ();
         dispatch ({
           type: 'ADD_MOVIES',
           data: res.data.Search,
@@ -65,6 +66,11 @@ function Header({toggleFav, closeFav}) {
       });
   };
 
+  const backToTop = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
+
   useEffect (
     () => {
       if (timer) clearTimeout (timer);
@@ -80,11 +86,21 @@ function Header({toggleFav, closeFav}) {
     setSearchVal (e.target.value);
   };
 
-  const openSearch = () => {
+  const toggleSearch = () => {
     if (searchBar.current) {
       if (searchBar.current.classList.contains ('searchBar__offsetShow'))
         searchBar.current.classList.remove ('searchBar__offsetShow');
-      else searchBar.current.classList.add ('searchBar__offsetShow');
+      else {
+        searchBar.current.classList.add ('searchBar__offsetShow');
+        const searchbox = document.querySelector ('.searchBar');
+        searchbox.focus ();
+      }
+    }
+  };
+
+  const closeSearch = () => {
+    if (searchBar.current) {
+      searchBar.current.classList.remove ('searchBar__offsetShow');
     }
   };
 
@@ -93,7 +109,13 @@ function Header({toggleFav, closeFav}) {
       <h2>MyFlix</h2>
       <div className="header__left">
         <span title="Favourites">
-          <FavoriteIcon className="header__favIcon" onClick={toggleFav} />
+          <FavoriteIcon
+            className="header__favIcon"
+            onClick={() => {
+              toggleFav ();
+              closeSearch ();
+            }}
+          />
         </span>
         <div ref={searchBar} className="searchBar__offset">
           <input
@@ -107,7 +129,7 @@ function Header({toggleFav, closeFav}) {
         </div>
 
         <span title="Search movies">
-          <SearchIcon className="header__searchIcon" onClick={openSearch} />
+          <SearchIcon className="header__searchIcon" onClick={toggleSearch} />
         </span>
       </div>
       <div ref={loader} className="loader">

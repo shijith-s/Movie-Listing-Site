@@ -2,20 +2,25 @@ export const initialState = {
   movies: [],
   favourites: [],
   searchVal: '',
+  page: 2,
 };
 
 const reducer = (state, action) => {
   console.log (action);
   switch (action.type) {
     case 'ADD_SEARCH': {
-      console.log ('Adding search val');
+      console.log ('Adding search val');  
       console.log (action.data);
-      return {...state, searchVal: action.data};
+      return {...state, searchVal: action.data, page: 2};
     }
     case 'ADD_MOVIES': {
       console.log ('Adding movies');
       console.log ({...state, movies: action.data});
       return {...state, movies: action.data};
+    }
+    case 'INCREMENT_PAGES': {
+      if (state.page >= 100) return state;
+      return {...state, page: state.page + 1};
     }
     case 'ADD_MORE_MOVIES': {
       console.log ('Adding more movies');

@@ -25,12 +25,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $purple2;
+  background-color: $headerBg;
   h2 {
     padding: 10px;
     color: white;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-      sans-serif;
+    font-family: "Niconne", cursive;
   }
   .header__left {
     display: flex;

@@ -9,6 +9,11 @@
   padding: 50px 20px 50px;
 }
 
+.movieList h2,
+.favourites_list h2 {
+  font-family: "Cookie", cursive;
+}
+
 .backToTop {
   display: none;
   cursor: pointer;
@@ -56,6 +61,12 @@
   color: black;
 }
 
+.hometext {
+  margin: 50px;
+  font-size: 2em;
+  font-family: "Cookie", cursive;
+}
+
 .movieCard {
   position: relative;
   cursor: pointer;
@@ -75,8 +86,7 @@
   opacity: 0;
   -webkit-transition: all 0.4s ease-in;
   transition: all 0.4s ease-in;
-  color: whitesmoke;
-  text-shadow: -5px 10px rgba(0, 0, 0, 0.9);
+  color: rgba(150, 150, 150, 0.8);
 }
 
 .movieCard .movieCard__favIcon:hover {

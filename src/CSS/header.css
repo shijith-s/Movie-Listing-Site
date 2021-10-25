@@ -30,13 +30,13 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #892cdc;
+  background-color: #0092cc;
 }
 
 .header h2 {
   padding: 10px;
   color: white;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Niconne", cursive;
 }
 
 .header .header__left {
