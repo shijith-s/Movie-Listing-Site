@@ -9,4 +9,6 @@
 body {
   background-color: $black;
   color: whitesmoke;
+  overflow-x: hidden;
+  min-height: 100vh;
 }

@@ -1,38 +1,61 @@
 @import "./variables";
 
-.movieList {
-  // width: auto;
-  // display: flex;
-  // flex-wrap: wrap;
-  // justify-content: space-evenly;
+.movieList,
+.favourites_list {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 10px;
-  padding-bottom: 100px;
-  padding-top: 50px;
+  padding: 50px 20px 50px;
+}
+
+.favourites {
+  padding-top: 20px;
+  .favourites__heading {
+    display: flex;
+    align-items: center;
+  }
+  .favourites__back {
+    margin: 10px;
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: 800;
+    border-radius: 50%;
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+  }
 }
 
 .movieCard {
-  position:relative;
+  position: relative;
   cursor: pointer;
   margin: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
-  align-items: stretch;
-  background-color: $grey;
+  overflow: hidden;
+  background-color: black;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
     0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
     0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
-    .movieCard__favIcon{
-      position:absolute;
-      top:5px;
-      right:5px;
+  .movieCard__favIcon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    opacity: 0;
+    transition: all 0.4s ease-in;
+    color: whitesmoke;
+    &:hover {
+      color: rgba(241, 57, 57, 0.979);
     }
+  }
+  .favRed {
+    color: red;
+    opacity: 1;
+  }
   .movieCard__poster {
     background-color: $grey;
-    flex: 0.8;
+    height: 100%;
     overflow: hidden;
     object-fit: contain;
     img {
@@ -41,17 +64,64 @@
     }
   }
   .movieCard__data {
-    padding: 5px 10px;
-    flex: 0.2;
-    background-color: black;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.4s ease-in-out;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+    height: 30%;
     color: white;
     width: auto;
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    font-size: 16px;
     p {
       font-weight: 800;
       position: absolute;
-      right: 10px;
-      bottom: 5px;
+      right: 20px;
+      bottom: 10px;
     }
+    &::before {
+      content: "";
+      height: 30px;
+      position: absolute;
+      z-index: 60;
+      top: 0;
+      left: 0;
+      right: 0;
+      transform: translateY(-100%);
+      pointer-events: none;
+      background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0)
+      );
+    }
+  }
+  &:hover,
+  &:active {
+    .movieCard__data {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .movieCard__favIcon {
+      opacity: 1;
+    }
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .movieCard__data {
+    font-size: 1.5em;
+  }
+  .movieList,
+  .favourites_list {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    align-items: center;
   }
 }

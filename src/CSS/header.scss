@@ -1,12 +1,28 @@
 @import "./variables";
 
+.loader {
+  display: none;
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #9aa5b1;
+  color: black;
+  padding: 10px 30px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+    0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+    0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+}
+
 .header {
-  width: auto;
+  width: 100vw;
   height: 50px;
   position: sticky;
+  z-index: 100;
   top: 0;
   left: 0;
-  right: 0;
+  // right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,12 +33,23 @@
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
       sans-serif;
   }
-  .searchBar {
-    margin-right: 20px;
-    padding: 5px 10px;
-    width: 250px;
-    border-radius: 10px;
-    border: none;
-    outline: none;
+  .header__left {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    .header__favIcon {
+      color: whitesmoke;
+      cursor: pointer;
+      margin: 10px;
+      font-size: 30px;
+    }
+    .searchBar {
+      margin-right: 20px;
+      padding: 5px 10px;
+      width: 250px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+    }
   }
 }

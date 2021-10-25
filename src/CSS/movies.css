@@ -1,47 +1,73 @@
-.movieList {
+.movieList,
+.favourites_list {
   width: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 10px;
-  padding-bottom: 100px;
-  padding-top: 50px;
+  padding: 50px 20px 50px;
+}
+
+.favourites {
+  padding-top: 20px;
+}
+
+.favourites .favourites__heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.favourites .favourites__back {
+  margin: 10px;
+  cursor: pointer;
+  font-size: 30px;
+  font-weight: 800;
+  border-radius: 50%;
+}
+
+.favourites .favourites__back:hover {
+  background-color: white;
+  color: black;
 }
 
 .movieCard {
   position: relative;
   cursor: pointer;
   margin: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: stretch;
-      -ms-flex-pack: stretch;
-          justify-content: stretch;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-  background-color: #aaa;
+  overflow: hidden;
+  background-color: black;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
 }
 
 .movieCard .movieCard__favIcon {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  opacity: 0;
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+  color: whitesmoke;
+}
+
+.movieCard .movieCard__favIcon:hover {
+  color: rgba(241, 57, 57, 0.979);
+}
+
+.movieCard .favRed {
+  color: red;
+  opacity: 1;
 }
 
 .movieCard .movieCard__poster {
   background-color: #aaa;
-  -webkit-box-flex: 0.8;
-      -ms-flex: 0.8;
-          flex: 0.8;
+  height: 100%;
   overflow: hidden;
   -o-object-fit: contain;
      object-fit: contain;
@@ -53,20 +79,73 @@
 }
 
 .movieCard .movieCard__data {
-  padding: 5px 10px;
-  -webkit-box-flex: 0.2;
-      -ms-flex: 0.2;
-          flex: 0.2;
-  background-color: black;
+  opacity: 0;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.9);
+  height: 30%;
   color: white;
   width: auto;
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  font-size: 16px;
 }
 
 .movieCard .movieCard__data p {
   font-weight: 800;
   position: absolute;
-  right: 10px;
-  bottom: 5px;
+  right: 20px;
+  bottom: 10px;
+}
+
+.movieCard .movieCard__data::before {
+  content: "";
+  height: 30px;
+  position: absolute;
+  z-index: 60;
+  top: 0;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  pointer-events: none;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.9)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+}
+
+.movieCard:hover .movieCard__data, .movieCard:active .movieCard__data {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.movieCard:hover .movieCard__favIcon, .movieCard:active .movieCard__favIcon {
+  opacity: 1;
+}
+
+@media only screen and (max-width: 300px) {
+  .movieCard__data {
+    font-size: 1.5em;
+  }
+  .movieList,
+  .favourites_list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: auto;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }
 /*# sourceMappingURL=movies.css.map */

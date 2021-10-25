@@ -13,14 +13,18 @@ const reducer = (state, action) => {
     }
     case 'ADD_FAVOURITE': {
       console.log ('Ading to favourites');
-      return {...state, favourites: [...state.favourites, action.data]};
+      const newFav = [...state.favourites, ...action.data];
+      localStorage.setItem ('fav', JSON.stringify(newFav));
+      return {...state, favourites: newFav};
     }
 
     case 'REMOVE_FAVOURITE': {
       console.log ('Removing from favourites');
       const favourites = state.favourites.filter (
-        movie => movie.id !== action.id
+        movie => movie.imdbID !== action.imdbID
       );
+      console.log ('after removal', favourites);
+      localStorage.setItem ('fav', JSON.stringify(favourites));
       return {
         ...state,
         favourites: favourites,
